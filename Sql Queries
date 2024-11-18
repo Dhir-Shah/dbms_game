@@ -1,0 +1,13 @@
+SELECT * FROM Cars;
+SELECT * FROM Cars WHERE Year BETWEEN 2015 AND 2017;
+SELECT * FROM Cars WHERE Model IN ('Toyota Corolla', 'Honda City', 'Maruti Suzuki Ciaz', 'Hyundai Verna', 'Renault Duster');
+SELECT SUM(Sale_Price) AS Total_Revenue FROM Transactions;
+SELECT * FROM Cars WHERE Price < '₹7,00,000';
+DELETE FROM Cars WHERE CarID = 105;
+UPDATE Cars SET Price = '₹7,20,000' WHERE CarID = 106;
+SELECT c.Model, t.Sale_Price, t.Sale_Date
+    FROM Transactions t
+    JOIN Cars c ON t.Car_ID = c.CarID
+    WHERE MONTH(t.Sale_Date) = 4;
+SELECT * FROM Cars WHERE Price = (SELECT MAX(Price) FROM Cars);
+SELECT * FROM Cars WHERE CarID NOT IN (SELECT Car_ID FROM Transactions);
